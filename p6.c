@@ -1,5 +1,3 @@
-//QUICK SORT
-
 #include<stdio.h>
 #include<time.h>
 int partition(int a[],int low,int high);
@@ -58,10 +56,3 @@ for(i=0;i<n;i++)
 printf("%d\t",a[i]);
 printf("\n Time Taken = %f",(double)(end-start)/CLOCKS_PER_SEC);
 }
-
-
-
-
-
-
-
