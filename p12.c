@@ -1,6 +1,8 @@
 #include<stdio.h>
 
-int a, b, u, v, i, j, n, ne = 1, visited[10] = {0}, min, mincost = 0, cost[10][10];
+int a, b, u, v, i, j, n, ne = 1, 
+visited[10] = {0}, 
+min, mincost = 0, cost[10][10];
 
 int main() {
     printf("Enter the number of vertices: ");
