@@ -1,43 +1,65 @@
-#include <stdio.h>
-#include <time.h>
-#define MAX 20
-
-int a[MAX], n;
-
-int linear_search(int key) {
-    for (int i = 0; i < n; i++)
-        if (a[i] == key) return i;
-    return -1;
+#include<stdio.h>
+#include<time.h>
+#define max 20
+int a[max],n,key;
+void main()
+{
+int i,key,ch,mid,low,high,L;
+clock_t start1,end1,start2,end2;
+printf("Enter the limit\n");
+scanf("%d",&n);
+printf("Enter the elements \n");
+for(i=1;i<=n;i++)
+scanf("%d",&a[i]);
+printf("\n LINEAR SEARCH \n");
+start1=clock();
+printf("Enter the key element to search\n");
+scanf("%d",&key);
+L=ls(1,key);
+end1=clock();
+f(L==-1)
+printf("Element is not found \n");
+else
+printf("Element is found \n");
+printf("Time=%f",((double)(end1-start1))/CLOCKS_PER_SEC);
+printf("\n");
+printf("\n BINARY SEARCH \n");
+start2=clock();
+printf("enter the key element to be searched\n");
+scanf("%d",&key);
+low=1;
+high=n;
+ch=bs(low,high,key);
+end2=clock();
+if(ch==-1)
+printf("element is not found\n");
+else
+printf("element is found\n");
+printf("Time=%f",((double)(end2-start2))/CLOCKS_PER_SEC);
 }
-
-int binary_search(int low, int high, int key) {
-    if (low > high) return -1;
-    int mid = (low + high) / 2;
-    return (a[mid] == key) ? mid : (key < a[mid] ? binary_search(low, mid - 1, key) : binary_search(mid + 1, high, key));
+int ls(int i, int key)
+{
+if(i>n)
+return(-1);
+if(a[i]==key)
+return i;
+else
+ls(++i,key);
+return;
 }
-
-int main() {
-    printf("Enter number of elements: ");
-    scanf("%d", &n);
-    printf("Enter elements:\n");
-    for (int i = 0; i < n; i++) scanf("%d", &a[i]);
-
-    // Linear Search
-    int key;
-    printf("\nLINEAR SEARCH\nEnter key: ");
-    scanf("%d", &key);
-    clock_t start = clock();
-    int result = linear_search(key);
-    printf(result == -1 ? "Not found\n" : "Found at index %d\n", result);
-    printf("Time = %f seconds\n", (double)(clock() - start) / CLOCKS_PER_SEC);
-
-    // Binary Search
-    printf("\nBINARY SEARCH\nEnter key: ");
-    scanf("%d", &key);
-    start = clock();
-    result = binary_search(0, n - 1, key);
-    printf(result == -1 ? "Not found\n" : "Found at index %d\n", result);
-    printf("Time = %f seconds\n", (double)(clock() - start) / CLOCKS_PER_SEC);
-
-    return 0;
+int bs(int low,inthigh,int key)
+{
+int mid;
+if(low>high)
+return (-1);
+mid=(low+high)/2;
+if(a[mid]==key)
+return mid;
+else
+{
+if(key<a[mid])
+bs(low,mid-1,key);
+else
+bs(mid+1,high,key);
+}
 }
