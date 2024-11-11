@@ -5,7 +5,7 @@ int merge(int *, int, int, int);
 void main ()
 {
 int i,n,a[20];
-clock_tstart,end;
+clock_t start,end;
 start = clock();
 printf("Enter the limit \n");
 scanf("%d",&n);
