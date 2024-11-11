@@ -1,33 +1,39 @@
 #include<stdio.h>
-
-int n, q[20], visited[20], a[20][20], f = 0, r = -1;
-
-void bfs(int v) {
-    visited[v] = 1;
-    q[++r] = v;
-    while (f <= r) {
-        v = q[f++];
-        for (int i = 1; i <= n; i++)
-            if (a[v][i] && !visited[i])
-                q[++r] = i, visited[i] = 1;
-    }
+int i,j,n,r=-1,f,q[20],visited[20];
+int a[20][20];
+int bfs(int v);
+void main()
+{
+int v;
+printf("Enter the number of vertices....\n");
+scanf("%d",&n);
+for(i=1;i<=n;i++)
+{
+q[i]=0;
+visited[i]=0;
 }
-
-int main() {
-    int v;
-    printf("Vertices: "), scanf("%d", &n);
-    printf("Adjacency matrix:\n");
-    for (int i = 1; i <= n; i++)
-        for (int j = 1; j <= n; j++)
-            scanf("%d", &a[i][j]);
-    
-    printf("Starting vertex: "), scanf("%d", &v);
-    bfs(v);
-    
-    printf("Reachable nodes from %d: ", v);
-    for (int i = 1; i <= n; i++)
-        if (visited[i])
-            printf("%d ", i);
-    
-    return 0;
+printf("Enter the adjacency matrix..\n");
+for(i=1;i<=n;i++)
+for(j=1;j<=n;j++)
+scanf("%d",&a[i][j]);
+printf("Enter the starting vertex...\n");
+scanf("%d",&v);
+bfs(v);
+printf("the nodes that are rachable from given node %d
+are..\n",v);
+for(i=1;i<=n;i++)
+if (visited[i])
+printf("%d ",i);
+}
+int bfs(int v)
+{
+for(i=1;i<=n;i++)
+if(a[v][i] && !visited[i])
+q[++r]=i;
+visited[i]=1;
+if (f <= r)
+{
+visited[q[f]]=1;
+bfs(q[f++]);
+}
 }
